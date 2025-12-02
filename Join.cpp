@@ -134,6 +134,7 @@ vector<uint> probe(Disk* disk, Mem* mem, vector<Bucket>& partitions) {
 						if (result_page->size() >= RECORDS_PER_PAGE - 1) {
 							uint flushed_page_id = mem->flushToDisk(disk, result_buffer);
 							result_pages.push_back(flushed_page_id);
+							result_page = mem->mem_page(result_buffer);
 						}
 						
 						if (left_is_smaller) {
